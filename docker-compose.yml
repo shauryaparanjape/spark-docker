@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+
+  py-spark:
+    build: 
+      context: .
+      dockerfile: ./spark-scripts/Dockerfile
+    container_name: py-spark
+    command: ["/opt/entrypoint.sh"]
+    entrypoint: ["/bin/bash"]
+    volumes:
+      - ./spark-mnt:/mnt/
+
+    ports:
+      - "4040:4040"
+      - "8080:8080"
+      - "22:22"
+    stdin_open: true
+    tty: true
+
+
